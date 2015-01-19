@@ -1,0 +1,311 @@
+/* RESET */
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body, header, h1, h2, h3, nav, footer, ul, li, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* LESS variables */
+
+@base-color: #006666;
+
+@lighter-base: lighten(@base-color, 10%);
+
+@greyed: lighten(greyscale(@base-color), 70%);
+
+@reddened: spin(@base-color, 180);
+
+@base-font-color: #fff;
+
+@scheme1-base: #006600;
+
+@scheme2-base: #3399CC;
+
+@scheme3-base: #FFF999;
+
+@pad-base: 5px 1%;
+
+/* LESS mix-ins */
+
+.gradient (@from: left, @first-color, @second-color) {
+  background-color: @first-color;
+  background-image: -webkit-linear-gradient(@from, @first-color, @second-color);
+  background-image: -moz-linear-gradient(@from, @first-color, @second-color);
+  background-image: -o-linear-gradient(@from, @first-color, @second-color);
+  background-image: -ms-linear-gradient(@from, @first-color, @second-color);
+  background-image: linear-gradient(@from, @first-color, @second-color);
+}
+
+.transform (@rotate: 90deg, @scale: 1, @skew: 1deg, @translate: 10px) {
+  -webkit-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  -moz-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  -o-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  -ms-transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+  transform: rotate(@rotate) scale(@scale) skew(@skew) translate(@translate);
+}
+
+.generate-columns(@num, @i: 1) when (@i <= @num) {
+  .column-@{i} {
+    width: (100% / @num);
+  }
+  .generate-columns(@num, (@i + 1));
+}
+
+.striped-loop (@i) when (@i > 0) {
+  .striped-loop (@i - 2);
+  .input-div:nth-child(@{i}) {
+    .gradient(left, @base-color, @greyed);
+    border-left: 2px solid #000;
+    color: @base-font-color;
+    &:hover {
+      .gradient(left, darken(@base-color, 20%), @greyed);
+    }
+  }
+}
+
+/* Still Working on this loop
+.color-coded-loop (@i) when (@i > 0) {
+  .color-coded-loop (@i - 1);
+  .colorCode:nth-child(@{i}) {
+    .gradient(left, @base-color, @greyed) when (mod(@i, 3) = 0);
+  }
+}
+*/
+
+.border-radius (@topleft: 5px, @topright: 5px, @bottomleft: 5px, @bottomright: 5px) {
+  border-radius: @topleft @topright @bottomright @bottomleft;
+}
+
+.box-shadow (@x: 0px, @y: 3px, @blur: 5px, @spread: 0.5, @color:#000) {
+  box-shadow: @x @y @blur @spread @color;
+}
+
+/* HEADER */
+
+header {
+  .gradient (bottom, @base-color, @lighter-base);
+  color: @base-font-color;
+  height: 50px;
+}
+
+/* TAGS */
+
+body {
+  background-color: @reddened;
+  font-family: Arial, Helvetica, Sans-Serif;
+}
+
+/* IDS */
+
+#main {
+  background-color: @greyed;
+  height: 600px;
+  color: negation(@base-font-color, @base-font-color);
+  .generate-columns(2);
+}
+
+/* STANDARD CLASSES */
+
+.clear {
+  clear: both;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.layout {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.btm-margin {
+  margin-bottom: 10px;
+}
+
+.pad {
+  padding: @pad-base;
+}
+
+.err-pad {
+  padding: 1px 0 0 2%;
+}
+
+.form-pad {
+  padding: 5px 0 5px 7px;
+}
+
+.err-color {
+  color: #990000;
+}
+
+.submit-btn {
+  display: block;
+  margin: 5px 0;
+  .gradient (bottom, @reddened, lighten(@reddened, 10%));
+  color: @base-font-color;
+  .border-radius(10px, 10px, 10px, 10px);
+  font-size: 1em;
+  .box-shadow(2px, 2px, 2px, 2px);
+  &:hover {
+    .gradient(bottom, darken(@reddened, 12%), darken(@reddened, 3%));
+  }
+}
+
+/* THE FORM */
+
+input {
+  border: 1px solid #000;
+  .border-radius(3px, 3px, 3px, 3px);
+}
+
+.input-div {
+  width: 90%;
+  height: 31px;
+  .generate-columns(3) !important;
+  border-left: 2px solid #000;
+  &:hover {
+    .gradient(left, darken(@base-color, 20%), @greyed);
+    color: @base-font-color;
+  }
+}
+
+.striped {
+  .striped-loop (8);
+}
+
+/*
+.color-coded {
+  .color-coded-loop (5);
+}
+*/
+
+label {
+  line-height: 1.3em;
+}
+
+/* COLOR SCHEME INPUT */
+
+.colors-width {
+  width: 60%;
+}
+
+.color-block {
+  display: inline-block;
+  height: 50px;
+  margin: 5px 0 0;
+  padding: 0;
+  border: 1px solid #000;
+}
+
+#complementary-scheme {
+  .generate-columns(6);
+  .color-block:first-child {
+    background-color: @scheme1-base;
+  }
+  .color-block:nth-child(2) {
+    background-color: lighten(@scheme1-base, 15%);
+  }
+
+  .color-block:nth-child(3) {
+    background-color: lighten(@scheme1-base, 25%);
+  }
+
+  .color-block:nth-child(4) {
+    background-color: spin(@scheme1-base, 180);
+  }
+
+  .color-block:nth-child(5) {
+    background-color: darken(spin(@scheme1-base, 180), 5%);
+  }
+}
+
+#mono-scheme {
+  .generate-columns(6);
+  .color-block:first-child {
+    background-color: @scheme2-base;
+  }
+  .color-block:nth-child(2) {
+    background-color: lighten(spin(@scheme2-base, 5), 10%);
+  }
+
+  .color-block:nth-child(3) {
+    background-color: lighten(spin(@scheme2-base, 10), 20%);
+  }
+
+  .color-block:nth-child(4) {
+    background-color: darken(spin(@scheme2-base, -5), 10%);
+  }
+
+  .color-block:nth-child(5) {
+    background-color: darken(spin(@scheme2-base, -10), 20%);
+  }
+}
+
+#wild-scheme {
+  .generate-columns(6);
+  .color-block:first-child {
+    background-color: @scheme3-base;
+  }
+  .color-block:nth-child(2) {
+    background-color: spin(@scheme3-base, 45);
+  }
+
+  .color-block:nth-child(3) {
+    background-color: spin(@scheme3-base, 119);
+  }
+
+  .color-block:nth-child(4) {
+    background-color: spin(@scheme3-base, 225);
+  }
+
+  .color-block:nth-child(5) {
+    background-color: spin(@scheme3-base, 300);
+  }
+}
+
+/* SHAPES INPUT */
+
+.shape-width {
+  width: 80%;
+}
+
+.box {
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  background-color: @lighter-base;
+  border: 1px solid #000;
+  vertical-align: middle;
+  margin: 3px 8px 15px;
+}
+
+.slanted {
+  .transform(20deg, 1, 0, 0px);
+}
+
+.skewed {
+  .transform(20deg, 1, 40deg, 0px);
+}
+
+/* FOOTER */
+
+footer {
+  .gradient (top, @base-color, @lighter-base);
+  color: @base-font-color;
+  height: 50px;
+}
+
+footer p {
+  padding: 2px 0
+}
