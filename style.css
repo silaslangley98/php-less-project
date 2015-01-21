@@ -13,20 +13,14 @@ nav,
 footer,
 ul,
 li,
-p {
+p,
+fieldset {
   margin: 0;
   padding: 0;
 }
 /* LESS variables */
 /* LESS mix-ins */
-/* Still Working on this loop
-.color-coded-loop (@i) when (@i > 0) {
-  .color-coded-loop (@i - 1);
-  .colorCode:nth-child(@{i}) {
-    .gradient(left, @base-color, @greyed) when (mod(@i, 3) = 0);
-  }
-}
-*/
+/* Having fun with loops! */
 /* HEADER */
 header {
   background-color: #006666;
@@ -36,17 +30,23 @@ header {
   background-image: -ms-linear-gradient(bottom, #006666, #009999);
   background-image: linear-gradient(bottom, #006666, #009999);
   color: #ffffff;
-  height: 50px;
+  height: 70px;
+}
+h1 {
+  margin-top: 10px !important;
 }
 /* TAGS */
 body {
   background-color: #660000;
   font-family: Arial, Helvetica, Sans-Serif;
 }
+form {
+  margin-top: 20px;
+}
 /* IDS */
 #main {
   background-color: #e5e5e5;
-  height: 600px;
+  height: 550px;
   color: #000000;
 }
 #main .column-1 {
@@ -69,11 +69,23 @@ body {
   width: 90%;
   margin: 0 auto;
 }
+.longer {
+  width: 300px !important;
+}
+.smaller {
+  width: 89%;
+}
 .btm-margin {
   margin-bottom: 10px;
 }
+.left-border {
+  border-left: 2px solid #000;
+}
 .pad {
   padding: 5px 1%;
+}
+.pad-extra {
+  padding: 10px 2.5%;
 }
 .err-pad {
   padding: 1px 0 0 2%;
@@ -110,6 +122,7 @@ body {
 input {
   border: 1px solid #000;
   border-radius: 3px 3px 3px 3px;
+  text-align: center;
 }
 .input-div {
   width: 90%;
@@ -141,7 +154,6 @@ input {
   background-image: -o-linear-gradient(left, #006666, #e5e5e5);
   background-image: -ms-linear-gradient(left, #006666, #e5e5e5);
   background-image: linear-gradient(left, #006666, #e5e5e5);
-  border-left: 2px solid #000;
   color: #ffffff;
 }
 .striped .input-div:nth-child(2):hover {
@@ -159,7 +171,6 @@ input {
   background-image: -o-linear-gradient(left, #006666, #e5e5e5);
   background-image: -ms-linear-gradient(left, #006666, #e5e5e5);
   background-image: linear-gradient(left, #006666, #e5e5e5);
-  border-left: 2px solid #000;
   color: #ffffff;
 }
 .striped .input-div:nth-child(4):hover {
@@ -177,7 +188,6 @@ input {
   background-image: -o-linear-gradient(left, #006666, #e5e5e5);
   background-image: -ms-linear-gradient(left, #006666, #e5e5e5);
   background-image: linear-gradient(left, #006666, #e5e5e5);
-  border-left: 2px solid #000;
   color: #ffffff;
 }
 .striped .input-div:nth-child(6):hover {
@@ -195,7 +205,6 @@ input {
   background-image: -o-linear-gradient(left, #006666, #e5e5e5);
   background-image: -ms-linear-gradient(left, #006666, #e5e5e5);
   background-image: linear-gradient(left, #006666, #e5e5e5);
-  border-left: 2px solid #000;
   color: #ffffff;
 }
 .striped .input-div:nth-child(8):hover {
@@ -206,17 +215,66 @@ input {
   background-image: -ms-linear-gradient(left, #000000, #e5e5e5);
   background-image: linear-gradient(left, #000000, #e5e5e5);
 }
-/*
-.color-coded {
-  .color-coded-loop (5);
+.color-coded .colorCode:nth-of-type(1) {
+  background-color: #006666;
+  background-image: -webkit-linear-gradient(left, #006666, #e5e5e5);
+  background-image: -moz-linear-gradient(left, #006666, #e5e5e5);
+  background-image: -o-linear-gradient(left, #006666, #e5e5e5);
+  background-image: -ms-linear-gradient(left, #006666, #e5e5e5);
+  background-image: linear-gradient(left, #006666, #e5e5e5);
 }
-*/
+.color-coded .colorCode:nth-of-type(2) {
+  background-color: #006600;
+  background-image: -webkit-linear-gradient(left, #006600, #e5e5e5);
+  background-image: -moz-linear-gradient(left, #006600, #e5e5e5);
+  background-image: -o-linear-gradient(left, #006600, #e5e5e5);
+  background-image: -ms-linear-gradient(left, #006600, #e5e5e5);
+  background-image: linear-gradient(left, #006600, #e5e5e5);
+}
+.color-coded .colorCode:nth-of-type(3) {
+  background-color: #660000;
+  background-image: -webkit-linear-gradient(left, #660000, #e5e5e5);
+  background-image: -moz-linear-gradient(left, #660000, #e5e5e5);
+  background-image: -o-linear-gradient(left, #660000, #e5e5e5);
+  background-image: -ms-linear-gradient(left, #660000, #e5e5e5);
+  background-image: linear-gradient(left, #660000, #e5e5e5);
+}
+.color-coded .colorCode:nth-of-type(4) {
+  background-color: #006600;
+  background-image: -webkit-linear-gradient(left, #006600, #e5e5e5);
+  background-image: -moz-linear-gradient(left, #006600, #e5e5e5);
+  background-image: -o-linear-gradient(left, #006600, #e5e5e5);
+  background-image: -ms-linear-gradient(left, #006600, #e5e5e5);
+  background-image: linear-gradient(left, #006600, #e5e5e5);
+}
+.color-coded .colorCode:nth-of-type(5) {
+  background-color: #006666;
+  background-image: -webkit-linear-gradient(left, #006666, #e5e5e5);
+  background-image: -moz-linear-gradient(left, #006666, #e5e5e5);
+  background-image: -o-linear-gradient(left, #006666, #e5e5e5);
+  background-image: -ms-linear-gradient(left, #006666, #e5e5e5);
+  background-image: linear-gradient(left, #006666, #e5e5e5);
+}
+.color-coded p {
+  display: inline-block;
+  width: 65%;
+  color: #ffffff;
+  padding: 6px 0 5px 5px;
+}
+.color-coded p:hover {
+  background-color: #000000 !important;
+  background-image: -webkit-linear-gradient(left, #000000, #e5e5e5) !important;
+  background-image: -moz-linear-gradient(left, #000000, #e5e5e5) !important;
+  background-image: -o-linear-gradient(left, #000000, #e5e5e5) !important;
+  background-image: -ms-linear-gradient(left, #000000, #e5e5e5) !important;
+  background-image: linear-gradient(left, #000000, #e5e5e5) !important;
+}
 label {
   line-height: 1.3em;
 }
 /* COLOR SCHEME INPUT */
 .colors-width {
-  width: 60%;
+  width: 80%;
 }
 .color-block {
   display: inline-block;
@@ -335,7 +393,7 @@ label {
   background-color: #009999;
   border: 1px solid #000;
   vertical-align: middle;
-  margin: 3px 8px 15px;
+  margin: 3px 8px 20px;
 }
 .slanted {
   -webkit-transform: rotate(20deg) scale(1) skew(0) translate(0px);
@@ -360,7 +418,7 @@ footer {
   background-image: -ms-linear-gradient(top, #006666, #009999);
   background-image: linear-gradient(top, #006666, #009999);
   color: #ffffff;
-  height: 50px;
+  height: 68px;
 }
 footer p {
   padding: 2px 0;

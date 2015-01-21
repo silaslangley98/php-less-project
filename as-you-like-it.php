@@ -9,7 +9,6 @@
 <body>
 
 <?php
-
             $firstNameErr = $lastNameErr = $emailErr = "";
             $play = "As You Like It";
 
@@ -51,60 +50,61 @@
     <div id="main" class = "main pad layout">
 
         <form method="post" action="as-you-like-it.php">
-            <div class="left striped column-1 btm-margin">
+            <div class="left column-1 btm-margin">
+                <div class="striped btm-margin">
+                    <div class = "form-pad input-div">
+                        <label class="column-1 left" for="firstName">First Name:</label>
+                        <input class="column-2 left" type="text" id="firstName" name="firstName" value="<?php if($firstName) {echo $firstName;} ?>">
+                        <span class="column-3 left err-pad err-color"><?php echo $firstNameErr; ?></span>
+                        <br>
+                    </div>
+                    <div class = "form-pad input-div">
+                        <label class="column-1 left" for="lastName">Last Name:</label>
+                        <input class="column-2 left" type="text" id="lastName" name="lastName" value="<?php if($lastName) {echo $lastName;} ?>">
+                        <span class="column-3 left err-pad err-color"><?php echo $lastNameErr; ?></span>
+                        <br>
+                    </div>
+                    <div class = "form-pad input-div">
+                        <label class="column-1 left" for="email">Email:</label>
+                        <input class="column-2 left" type="email" id="email" name="email" value="<?php if($email) {echo $email;} ?>">
+                        <span class="column-3 left err-pad err-color"><?php echo $emailErr; ?></span>
+                        <br>
+                    </div>
+                    <div class = "form-pad input-div">
+                        <label class="column-1 left" for="city">Favorite City:</label>
+                        <input class="column-2 left" type="text" id="city" name="city" value="<?php if($city) {echo $city;} ?>">
+                        <br>
+                    </div>
+                    <div class = "form-pad input-div">
+                        <label class="column-1 left" for="book">Favorite Book:</label>
+                        <input class="column-2 left" type="text" id="book" name="book" value="<?php if($book) {echo $book;} ?>">
+                        <br>
+                    </div>
+                    <div class = "form-pad input-div">
+                        <label class="column-1 left" for="play">Favorite Play:</label>
+                        <input class="column-2 left" type="text" id="play" name="play" value="<?php if($play) {echo $play;} ?>">
+                        <br>
+                    </div>
+                    <div class = "form-pad input-div">
+                        <label class="column-1 left" for="movie">Favorite Movie:</label>
+                        <input class="column-2 left" type="text" id="movie" name="movie" value="<?php if($movie) {echo $movie;} ?>">
+                        <br>
+                    </div>
+                    <div class = "form-pad input-div">
+                        <label class="column-1 left" for="tree">Favorite Tree:</label>
+                        <input class="column-2 left" type="text" id="tree" name="tree" value="<?php if($tree) {echo $tree;} ?>">
+                        <br>
+                    </div>
+                </div>
 
-                <div class = "form-pad input-div">
-                    <label class="column-1 left" for="firstName">First Name:</label>
-                    <input class="column-2 left" type="text" id="firstName" name="firstName" value="<?php if($firstName) {echo $firstName;} ?>">
-                    <span class="column-3 left err-pad err-color"><?php echo $firstNameErr; ?></span>
-                    <br>
-                </div>
-                <div class = "form-pad input-div">
-                    <label class="column-1 left" for="lastName">Last Name:</label>
-                    <input class="column-2 left" type="text" id="lastName" name="lastName" value="<?php if($lastName) {echo $lastName;} ?>">
-                    <span class="column-3 left err-pad err-color"><?php echo $lastNameErr; ?></span>
-                    <br>
-                </div>
-                <div class = "form-pad input-div">
-                    <label class="column-1 left" for="email">Email:</label>
-                    <input class="column-2 left" type="email" id="email" name="email" value="<?php if($email) {echo $email;} ?>">
-                    <span class="column-3 left err-pad err-color"><?php echo $emailErr; ?></span>
-                    <br>
-                </div>
-                <div class = "form-pad input-div">
-                    <label class="column-1 left" for="city">Favorite City:</label>
-                    <input class="column-2 left" type="text" id="city" name="city" value="<?php if($city) {echo $city;} ?>">
-                    <br>
-                </div>
-                <div class = "form-pad input-div">
-                    <label class="column-1 left" for="book">Favorite Book:</label>
-                    <input class="column-2 left" type="text" id="book" name="book" value="<?php if($book) {echo $book;} ?>">
-                    <br>
-                </div>
-                <div class = "form-pad input-div">
-                    <label class="column-1 left" for="play">Favorite Play:</label>
-                    <input class="column-2 left" type="text" id="play" name="play" value="<?php if($play) {echo $play;} ?>">
-                    <br>
-                </div>
-                <div class = "form-pad input-div">
-                    <label class="column-1 left" for="movie">Favorite Movie:</label>
-                    <input class="column-2 left" type="text" id="movie" name="movie" value="<?php if($movie) {echo $movie;} ?>">
-                    <br>
-                </div>
-                <div class = "form-pad input-div">
-                    <label class="column-1 left" for="tree">Favorite Tree:</label>
-                    <input class="column-2 left" type="text" id="tree" name="tree" value="<?php if($tree) {echo $tree;} ?>">
-                    <br>
-                </div>
-
-                <fieldset>
-                    <p>My dream vacation:</p>
+                <fieldset class = "pad-extra left-border smaller">
+                    <p>Your dream vacation:</p>
                     <div class="color-coded">
-                        <input type="radio" name="vacation" value="resort"><span class="colorCode">lounging in a tropical resort</span><br>
-                        <input type="radio" name="vacation" value="camping"><span class="colorCode">camping in the high Sierras</span><br>
-                        <input type="radio" name="vacation" value="paris"><span class="colorCode">walking in the heart of Paris</span><br>
-                        <input type="radio" name="vacation" value="hiking"><span class="colorCode">hiking the Pacific Crest Trail</span><br>
-                        <input type="radio" name="vacation" value="village"><span class="colorCode">hanging out in a Costa Rican village</span>
+                        <input type="radio" name="vacation" value="resort"><p class="colorCode">lounging in a tropical resort</p><br>
+                        <input type="radio" name="vacation" value="camping"><p class="colorCode">camping in the high Sierras</p><br>
+                        <input type="radio" name="vacation" value="paris"><p class="colorCode">walking in the heart of Paris</p><br>
+                        <input type="radio" name="vacation" value="hiking"><p class="colorCode">hiking the Pacific Crest Trail</p><br>
+                        <input type="radio" name="vacation" value="village"><p class="colorCode">hanging out in a Costa Rican village</p>
                     </div>
                 </fieldset>
 
@@ -113,7 +113,7 @@
             <div class="right column-2">
 
                 <div class="pad colors-width">
-                    <fieldset>
+                    <fieldset class="pad-extra">
                         <p>Which color scheme do you prefer?</p>
                         <input type="radio" name="scheme" value="complementary">Complementary
                         <div id="complementary-scheme">
@@ -161,8 +161,8 @@
                     </fieldset>
                 </div>
 
-                <div class="pad shape-width">
-                    <fieldset>
+                <div class= "pad shape-width">
+                    <fieldset class="pad-extra">
                         <p>I like things:</p>
                         <input type="radio" name="shape" value="straight">Straight<span class="box"></span>
                         <input type="radio" name="shape" value="slanted">Slanted<span class="slanted box"></span>

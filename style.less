@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-body, header, h1, h2, h3, nav, footer, ul, li, p {
+body, header, h1, h2, h3, nav, footer, ul, li, p, fieldset {
   margin: 0;
   padding: 0;
 }
@@ -61,7 +61,6 @@ body, header, h1, h2, h3, nav, footer, ul, li, p {
   .striped-loop (@i - 2);
   .input-div:nth-child(@{i}) {
     .gradient(left, @base-color, @greyed);
-    border-left: 2px solid #000;
     color: @base-font-color;
     &:hover {
       .gradient(left, darken(@base-color, 20%), @greyed);
@@ -69,14 +68,19 @@ body, header, h1, h2, h3, nav, footer, ul, li, p {
   }
 }
 
-/* Still Working on this loop
+/* Having fun with loops! */
 .color-coded-loop (@i) when (@i > 0) {
   .color-coded-loop (@i - 1);
-  .colorCode:nth-child(@{i}) {
-    .gradient(left, @base-color, @greyed) when (mod(@i, 3) = 0);
+  .colorCode:nth-of-type(@{i}) when (@i = 1), (@i = 5 ) {
+    .gradient(left, @base-color, @greyed);
+  }
+  .colorCode:nth-of-type(@{i}) when (mod(@i, 2) = 0) {
+    .gradient(left, @scheme1-base, @greyed);
+  }
+  .colorCode:nth-of-type(@{i}) when (mod(@i, 3) = 0) {
+    .gradient(left, @reddened, @greyed);
   }
 }
-*/
 
 .border-radius (@topleft: 5px, @topright: 5px, @bottomleft: 5px, @bottomright: 5px) {
   border-radius: @topleft @topright @bottomright @bottomleft;
@@ -91,7 +95,11 @@ body, header, h1, h2, h3, nav, footer, ul, li, p {
 header {
   .gradient (bottom, @base-color, @lighter-base);
   color: @base-font-color;
-  height: 50px;
+  height: 70px;
+}
+
+h1 {
+  margin-top: 10px !important;
 }
 
 /* TAGS */
@@ -101,11 +109,15 @@ body {
   font-family: Arial, Helvetica, Sans-Serif;
 }
 
+form {
+  margin-top: 20px;
+}
+
 /* IDS */
 
 #main {
   background-color: @greyed;
-  height: 600px;
+  height: 550px;
   color: negation(@base-font-color, @base-font-color);
   .generate-columns(2);
 }
@@ -129,12 +141,28 @@ body {
   margin: 0 auto;
 }
 
+.longer {
+  width: 300px !important;
+}
+
+.smaller {
+  width: 89%;
+}
+
 .btm-margin {
   margin-bottom: 10px;
 }
 
+.left-border {
+  border-left: 2px solid #000;
+}
+
 .pad {
   padding: @pad-base;
+}
+
+.pad-extra{
+  padding: 10px 2.5%;
 }
 
 .err-pad {
@@ -167,6 +195,7 @@ body {
 input {
   border: 1px solid #000;
   .border-radius(3px, 3px, 3px, 3px);
+  text-align: center;
 }
 
 .input-div {
@@ -184,11 +213,20 @@ input {
   .striped-loop (8);
 }
 
-/*
+
 .color-coded {
   .color-coded-loop (5);
+  p {
+    display: inline-block;
+    width: 65%;
+    color: @base-font-color;
+    padding: 6px 0 5px 5px;
+    &:hover {
+      .gradient(left, darken(@base-color, 20%), @greyed) !important;
+    }
+  }
 }
-*/
+
 
 label {
   line-height: 1.3em;
@@ -197,7 +235,7 @@ label {
 /* COLOR SCHEME INPUT */
 
 .colors-width {
-  width: 60%;
+  width: 80%;
 }
 
 .color-block {
@@ -287,7 +325,7 @@ label {
   background-color: @lighter-base;
   border: 1px solid #000;
   vertical-align: middle;
-  margin: 3px 8px 15px;
+  margin: 3px 8px 20px;
 }
 
 .slanted {
@@ -303,7 +341,7 @@ label {
 footer {
   .gradient (top, @base-color, @lighter-base);
   color: @base-font-color;
-  height: 50px;
+  height: 68px;
 }
 
 footer p {
